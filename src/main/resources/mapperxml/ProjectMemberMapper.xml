@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.ProjectMemberMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.ProjectMember">
+    <!--@mbg.generated-->
+    <!--@Table project_member-->
+    <id column="pm_project_id" property="projectId" />
+    <id column="pm_user_id" property="userId" />
+    <result column="pm_duty" property="duty" />
+    <result column="pm_permission_level" property="permissionLevel" />
+    <result column="pm_entering_time" property="enteringTime" />
+    <result column="pm_ranking" property="ranking" />
+    <result column="pm_create_time" property="createTime" />
+    <result column="pm_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pm_project_id, pm_user_id, pm_duty, pm_permission_level, pm_entering_time, pm_ranking, 
+    pm_create_time, pm_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from project_member
+    where pm_project_id = #{projectId}
+      and pm_user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from project_member
+    where pm_project_id = #{projectId}
+      and pm_user_id = #{userId}
+  </delete>
+  <insert id="insert" parameterType="cn.steateam.lets_team_server.entity.ProjectMember">
+    <!--@mbg.generated-->
+    insert into project_member (pm_project_id, pm_user_id, pm_duty, pm_permission_level, pm_entering_time, pm_ranking, 
+      pm_create_time, pm_update_time)
+    values (#{projectId}, #{userId}, #{duty}, #{permissionLevel}, #{enteringTime}, #{ranking}, 
+      #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.steateam.lets_team_server.entity.ProjectMember">
+    <!--@mbg.generated-->
+    insert into project_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        pm_project_id,
+      </if>
+      <if test="userId != null">
+        pm_user_id,
+      </if>
+      <if test="duty != null">
+        pm_duty,
+      </if>
+      <if test="permissionLevel != null">
+        pm_permission_level,
+      </if>
+      <if test="enteringTime != null">
+        pm_entering_time,
+      </if>
+      <if test="ranking != null">
+        pm_ranking,
+      </if>
+      <if test="createTime != null">
+        pm_create_time,
+      </if>
+      <if test="updateTime != null">
+        pm_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        #{projectId},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="duty != null">
+        #{duty},
+      </if>
+      <if test="permissionLevel != null">
+        #{permissionLevel},
+      </if>
+      <if test="enteringTime != null">
+        #{enteringTime},
+      </if>
+      <if test="ranking != null">
+        #{ranking},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.ProjectMember">
+    <!--@mbg.generated-->
+    update project_member
+    <set>
+      <if test="duty != null">
+        pm_duty = #{duty},
+      </if>
+      <if test="permissionLevel != null">
+        pm_permission_level = #{permissionLevel},
+      </if>
+      <if test="enteringTime != null">
+        pm_entering_time = #{enteringTime},
+      </if>
+      <if test="ranking != null">
+        pm_ranking = #{ranking},
+      </if>
+      <if test="createTime != null">
+        pm_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        pm_update_time = #{updateTime},
+      </if>
+    </set>
+    where pm_project_id = #{projectId}
+      and pm_user_id = #{userId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.ProjectMember">
+    <!--@mbg.generated-->
+    update project_member
+    set pm_duty = #{duty},
+      pm_permission_level = #{permissionLevel},
+      pm_entering_time = #{enteringTime},
+      pm_ranking = #{ranking},
+      pm_create_time = #{createTime},
+      pm_update_time = #{updateTime}
+    where pm_project_id = #{projectId}
+      and pm_user_id = #{userId}
+  </update>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.ProjectMemberVo">
+    <id column="pm_project_id" property="projectId" />
+    <id column="pm_user_id" property="userId" />
+    <result column="pm_duty" property="duty" />
+    <result column="pm_permission_level" property="permissionLevel" />
+    <result column="pm_entering_time" property="enteringTime" />
+    <result column="pm_ranking" property="ranking" />
+  </resultMap>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-10-->
+  <select id="selectByProjectId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from project_member
+        where pm_project_id=#{projectId}
+    </select>
+
+  <select id="selectVoByProjectId" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_member
+    where pm_project_id=#{projectId}
+  </select>
+</mapper>

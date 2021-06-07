@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.CompetitionQuestionMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.CompetitionQuestion">
+    <!--@mbg.generated-->
+    <!--@Table competition_question-->
+    <id column="cq_id" property="id" />
+    <result column="cq_comp_id" property="compId" />
+    <result column="cq_author_user_id" property="authorUserId" />
+    <result column="cq_title" property="title" />
+    <result column="cq_content" property="content" />
+    <result column="cq_post_time" property="postTime" />
+    <result column="cq_status" property="status" />
+    <result column="cq_update_time" property="updateTime" />
+  </resultMap>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.CompetitionQuestionVo">
+    <id column="cq_id" property="id" />
+    <result column="cq_comp_id" property="compId" />
+    <result column="cq_author_user_id" property="authorUserId" />
+    <result column="cq_title" property="title" />
+    <result column="cq_content" property="content" />
+    <result column="cq_post_time" property="postTime" />
+    <result column="cq_status" property="status" />
+    <result column="cq_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    cq_id, cq_comp_id, cq_author_user_id, cq_title, cq_content, cq_post_time, cq_status, 
+    cq_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from competition_question
+    where cq_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from competition_question
+    where cq_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="cq_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionQuestion" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_question (cq_comp_id, cq_author_user_id, cq_title, cq_content, cq_post_time, cq_status, 
+      cq_update_time)
+    values (#{compId}, #{authorUserId}, #{title}, #{content}, #{postTime}, #{status}, 
+      #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="cq_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionQuestion" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="compId != null">
+        cq_comp_id,
+      </if>
+      <if test="authorUserId != null">
+        cq_author_user_id,
+      </if>
+      <if test="title != null">
+        cq_title,
+      </if>
+      <if test="content != null">
+        cq_content,
+      </if>
+      <if test="postTime != null">
+        cq_post_time,
+      </if>
+      <if test="status != null">
+        cq_status,
+      </if>
+      <if test="updateTime != null">
+        cq_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="compId != null">
+        #{compId},
+      </if>
+      <if test="authorUserId != null">
+        #{authorUserId},
+      </if>
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="postTime != null">
+        #{postTime},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.CompetitionQuestion">
+    <!--@mbg.generated-->
+    update competition_question
+    <set>
+      <if test="compId != null">
+        cq_comp_id = #{compId},
+      </if>
+      <if test="authorUserId != null">
+        cq_author_user_id = #{authorUserId},
+      </if>
+      <if test="title != null">
+        cq_title = #{title},
+      </if>
+      <if test="content != null">
+        cq_content = #{content},
+      </if>
+      <if test="postTime != null">
+        cq_post_time = #{postTime},
+      </if>
+      <if test="status != null">
+        cq_status = #{status},
+      </if>
+      <if test="updateTime != null">
+        cq_update_time = #{updateTime},
+      </if>
+    </set>
+    where cq_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.CompetitionQuestion">
+    <!--@mbg.generated-->
+    update competition_question
+    set cq_comp_id = #{compId},
+      cq_author_user_id = #{authorUserId},
+      cq_title = #{title},
+      cq_content = #{content},
+      cq_post_time = #{postTime},
+      cq_status = #{status},
+      cq_update_time = #{updateTime}
+    where cq_id = #{id}
+  </update>
+
+  <select id="selectVoById" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from competition_question
+    where cq_id=#{id}
+  </select>
+</mapper>

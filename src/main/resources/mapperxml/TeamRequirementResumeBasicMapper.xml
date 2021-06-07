@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.TeamRequirementResumeBasicMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.TeamRequirementResumeBasic">
+    <!--@mbg.generated-->
+    <!--@Table team_requirement_resume_basic-->
+    <id column="trrb_requirement_id" property="requirementId" />
+    <result column="trrb_true_name" property="trueName" />
+    <result column="trrb_school_id" property="schoolId" />
+    <result column="trrb_major" property="major" />
+    <result column="trrb_admission_date" property="admissionDate" />
+    <result column="trrb_tags" property="tags" />
+    <result column="trrb_intro" property="intro" />
+    <result column="trrb_homepage_url" property="homepageUrl" />
+    <result column="trrb_create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    trrb_requirement_id, trrb_true_name, trrb_school_id, trrb_major, trrb_admission_date, 
+    trrb_tags, trrb_intro, trrb_homepage_url, trrb_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from team_requirement_resume_basic
+    where trrb_requirement_id = #{requirementId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from team_requirement_resume_basic
+    where trrb_requirement_id = #{requirementId}
+  </delete>
+  <insert id="insert" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeBasic">
+    <!--@mbg.generated-->
+    insert into team_requirement_resume_basic (trrb_requirement_id, trrb_true_name, trrb_school_id, trrb_major, trrb_admission_date, trrb_tags, 
+      trrb_intro, trrb_homepage_url, trrb_create_time)
+    values (#{requirementId}, #{trueName}, #{schoolId}, #{major}, #{admissionDate}, #{tags}, 
+      #{intro}, #{homepageUrl}, #{createTime})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeBasic">
+    <!--@mbg.generated-->
+    insert into team_requirement_resume_basic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="requirementId != null">
+        trrb_requirement_id,
+      </if>
+      <if test="trueName != null">
+        trrb_true_name,
+      </if>
+      <if test="schoolId != null">
+        trrb_school_id,
+      </if>
+      <if test="major != null">
+        trrb_major,
+      </if>
+      <if test="admissionDate != null">
+        trrb_admission_date,
+      </if>
+      <if test="tags != null">
+        trrb_tags,
+      </if>
+      <if test="intro != null">
+        trrb_intro,
+      </if>
+      <if test="homepageUrl != null">
+        trrb_homepage_url,
+      </if>
+      <if test="createTime != null">
+        trrb_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="requirementId != null">
+        #{requirementId},
+      </if>
+      <if test="trueName != null">
+        #{trueName},
+      </if>
+      <if test="schoolId != null">
+        #{schoolId},
+      </if>
+      <if test="major != null">
+        #{major},
+      </if>
+      <if test="admissionDate != null">
+        #{admissionDate},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="homepageUrl != null">
+        #{homepageUrl},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeBasic">
+    <!--@mbg.generated-->
+    update team_requirement_resume_basic
+    <set>
+      <if test="trueName != null">
+        trrb_true_name = #{trueName},
+      </if>
+      <if test="schoolId != null">
+        trrb_school_id = #{schoolId},
+      </if>
+      <if test="major != null">
+        trrb_major = #{major},
+      </if>
+      <if test="admissionDate != null">
+        trrb_admission_date = #{admissionDate},
+      </if>
+      <if test="tags != null">
+        trrb_tags = #{tags},
+      </if>
+      <if test="intro != null">
+        trrb_intro = #{intro},
+      </if>
+      <if test="homepageUrl != null">
+        trrb_homepage_url = #{homepageUrl},
+      </if>
+      <if test="createTime != null">
+        trrb_create_time = #{createTime},
+      </if>
+    </set>
+    where trrb_requirement_id = #{requirementId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeBasic">
+    <!--@mbg.generated-->
+    update team_requirement_resume_basic
+    set trrb_true_name = #{trueName},
+      trrb_school_id = #{schoolId},
+      trrb_major = #{major},
+      trrb_admission_date = #{admissionDate},
+      trrb_tags = #{tags},
+      trrb_intro = #{intro},
+      trrb_homepage_url = #{homepageUrl},
+      trrb_create_time = #{createTime}
+    where trrb_requirement_id = #{requirementId}
+  </update>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.TeamRequirementResumeBasicVo">
+    <id column="trrb_requirement_id" property="requirementId" />
+    <result column="trrb_true_name" property="trueName" />
+    <result column="trrb_school_id" property="schoolId" />
+    <result column="trrb_major" property="major" />
+    <result column="trrb_admission_date" property="admissionDate" />
+    <result column="trrb_tags" property="tags" />
+    <result column="trrb_intro" property="intro" />
+    <result column="trrb_homepage_url" property="homepageUrl" />
+  </resultMap>
+
+  <select id="selectVoByRequirementId" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from team_requirement_resume_basic
+    where trrb_requirement_id=#{requirementId}
+  </select>
+</mapper>

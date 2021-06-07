@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.MessageMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.Message">
+    <!--@mbg.generated-->
+    <!--@Table message-->
+    <id column="msg_id" property="id" />
+    <result column="msg_session_key" property="sessionKey" />
+    <result column="msg_sender_user_id" property="senderUserId" />
+    <result column="msg_receiver_user_id" property="receiverUserId" />
+    <result column="msg_type" property="type" />
+    <result column="msg_content_type" property="contentType" />
+    <result column="msg_content" property="content" />
+    <result column="msg_sending_time" property="sendingTime" />
+    <result column="msg_status" property="readStatus" />
+    <result column="msg_read_time" property="readTime" />
+    <result column="msg_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    msg_id, msg_session_key, msg_sender_user_id, msg_receiver_user_id, msg_type, msg_content_type, 
+    msg_content, msg_sending_time, msg_status, msg_read_time, msg_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where msg_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from message
+    where msg_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="msg_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Message" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into message (msg_session_key, msg_sender_user_id, msg_receiver_user_id, msg_type, msg_content_type, 
+      msg_content, msg_sending_time, msg_status, msg_read_time, msg_update_time)
+    values (#{sessionKey}, #{senderUserId}, #{receiverUserId}, #{type}, #{contentType}, 
+      #{content}, #{sendingTime}, #{readStatus}, #{readTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="msg_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Message" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sessionKey != null">
+        msg_session_key,
+      </if>
+      <if test="senderUserId != null">
+        msg_sender_user_id,
+      </if>
+      <if test="receiverUserId != null">
+        msg_receiver_user_id,
+      </if>
+      <if test="type != null">
+        msg_type,
+      </if>
+      <if test="contentType != null">
+        msg_content_type,
+      </if>
+      <if test="content != null">
+        msg_content,
+      </if>
+      <if test="sendingTime != null">
+        msg_sending_time,
+      </if>
+      <if test="readStatus != null">
+        msg_status,
+      </if>
+      <if test="readTime != null">
+        msg_read_time,
+      </if>
+      <if test="updateTime != null">
+        msg_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sessionKey != null">
+        #{sessionKey},
+      </if>
+      <if test="senderUserId != null">
+        #{senderUserId},
+      </if>
+      <if test="receiverUserId != null">
+        #{receiverUserId},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="contentType != null">
+        #{contentType},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="sendingTime != null">
+        #{sendingTime},
+      </if>
+      <if test="readStatus != null">
+        #{readStatus},
+      </if>
+      <if test="readTime != null">
+        #{readTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.Message">
+    <!--@mbg.generated-->
+    update message
+    <set>
+      <if test="sessionKey != null">
+        msg_session_key = #{sessionKey},
+      </if>
+      <if test="senderUserId != null">
+        msg_sender_user_id = #{senderUserId},
+      </if>
+      <if test="receiverUserId != null">
+        msg_receiver_user_id = #{receiverUserId},
+      </if>
+      <if test="type != null">
+        msg_type = #{type},
+      </if>
+      <if test="contentType != null">
+        msg_content_type = #{contentType},
+      </if>
+      <if test="content != null">
+        msg_content = #{content},
+      </if>
+      <if test="sendingTime != null">
+        msg_sending_time = #{sendingTime},
+      </if>
+      <if test="readStatus != null">
+        msg_status = #{readStatus},
+      </if>
+      <if test="readTime != null">
+        msg_read_time = #{readTime},
+      </if>
+      <if test="updateTime != null">
+        msg_update_time = #{updateTime},
+      </if>
+    </set>
+    where msg_id = #{id}
+  </update>
+  <update id="updateStatusBySenderId" parameterType="int">
+    update message
+    set msg_status = #{status}
+    where msg_sender_user_id = #{senderUserId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.Message">
+    <!--@mbg.generated-->
+    update message
+    set msg_session_key = #{sessionKey},
+      msg_sender_user_id = #{senderUserId},
+      msg_receiver_user_id = #{receiverUserId},
+      msg_type = #{type},
+      msg_content_type = #{contentType},
+      msg_content = #{content},
+      msg_sending_time = #{sendingTime},
+      msg_status = #{readStatus},
+      msg_read_time = #{readTime},
+      msg_update_time = #{updateTime}
+    where msg_id = #{id}
+  </update>
+    <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.MessageVo">
+        <result column="msg_sender_user_id" property="senderUserId" />
+        <result column="msg_receiver_user_id" property="receiverUserId" />
+        <result column="msg_type" property="type" />
+        <result column="msg_content_type" property="contentType" />
+        <result column="msg_content" property="content" />
+        <result column="msg_sending_time" property="sendingTime" />
+        <result column="msg_status" property="readStatus" />
+        <result column="msg_read_time" property="readTime" />
+    </resultMap>
+    <resultMap id="SessionResultMap" type="cn.steateam.lets_team_server.dto.MessageSessionDto">
+        <result column="msg_session_key" property="sessionKey" />
+        <result column="msg_last_message_sending_time" property="lastMessageSendingTime" />
+    </resultMap>
+
+    <select id="selectVoBySessionKey" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from message
+        where msg_session_key = #{sessionKey}
+        order by msg_sending_time desc
+    </select>
+
+    <select id="selectSessionByUserId" resultMap="SessionResultMap">
+        select msg_session_key, MAX(msg_sending_time) as msg_last_message_sending_time
+        from message
+        where msg_session_key like concat(#{userId}, ':%')
+           or msg_session_key like concat('%:', #{userId})
+        group by msg_session_key
+        order by msg_last_message_sending_time desc
+    </select>
+
+    <select id="selectLastBySessionKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from message
+        where msg_session_key = #{sessionKey}
+        order by msg_sending_time desc
+        limit 1
+    </select>
+
+    <select id="selectLastVoBySessionKey" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from message
+        where msg_session_key = #{sessionKey}
+        order by msg_sending_time desc
+        limit 1
+    </select>
+
+    <select id="selectCountByCriteria" resultType="java.lang.Integer">
+        select count(1)
+        from message
+        where msg_sender_user_id = #{criteria.senderUserId}
+          and msg_receiver_user_id = #{criteria.receiverUserId}
+          and msg_status = #{criteria.readStatus}
+    </select>
+
+    <update id="updateReadStatusAndReadTimeByCriteria">
+        update message
+        set msg_status=#{updatedReadStatus},
+            msg_read_time=#{updatedReadTime}
+        where msg_sender_user_id = #{criteria.senderUserId}
+          and msg_receiver_user_id = #{criteria.receiverUserId}
+          and msg_status = #{criteria.readStatus}
+    </update>
+
+  <update id="updateLastMsgReadStatusAndReadTimeByCriteria">
+        update message
+        set msg_status=#{updatedReadStatus},
+            msg_read_time=#{updatedReadTime}
+        where msg_sender_user_id = #{criteria.senderUserId}
+          and msg_receiver_user_id = #{criteria.receiverUserId}
+        order by msg_sending_time desc
+        limit 1
+    </update>
+</mapper>

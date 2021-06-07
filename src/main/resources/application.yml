@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://hdustea.3322.org:13306/lets_team?serverTimezone=Hongkong
+    username: root
+    password: ROOT_root123
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  mail:
+    host: smtp.exmail.qq.com
+    username: 'hzbytecloud@hzbytecloud.cn'
+    password: 9BwgZVuerx22UaL8
+    port: 465
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+  freemarker:
+    template-loader-path: classpath:/templates
+  elasticsearch:
+    rest:
+      uris: localhost:9200
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapperxml/*.xml
+server:
+  port: 8085
+authorization-config:
+  refresh-token:
+    expire-time: 604800
+  access-token:
+    expire-time: 7200
+mail-config:
+  from-address: 'hzbytecloud@hzbytecloud.cn'
+  code-length: 6
+  expire-time: 1200
+  cooling-time: 60
+  subject: '[组队啦]用户邮箱验证邮件'
+aliyun:
+  uid: 12345678
+  oss:
+    endpoint: 'oss-cn-hangzhou.aliyuncs.com'
+    access-key-id: LTAI4Fyvv14m9sdaaJu4fsHw
+    access-key-secret: ANFXQy1VWDzSH3CQw0jLls3AxJQ6wd
+    object:
+      max-size: 512000
+    signature:
+      expire-time: 600
+    bucket:
+      public-bucket:
+        name: 'lets-team--public'
+      private-bucket:
+        name: 'lets-team--private'

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.User">
+    <!--@mbg.generated-->
+    <!--@Table `user`-->
+    <id column="u_id" property="id" />
+    <result column="u_password" property="password" />
+    <result column="u_role_id" property="roleId" />
+    <result column="u_register_time" property="registerTime" />
+    <result column="u_last_login_time" property="lastLoginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    u_id, u_password, u_role_id, u_register_time, u_last_login_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `user`
+    where u_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `user`
+    where u_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="u_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user` (u_password, u_role_id, u_register_time, u_last_login_time)
+    values (#{password}, #{roleId}, #{registerTime}, #{lastLoginTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="u_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="password != null">
+        u_password,
+      </if>
+      <if test="roleId != null">
+        u_role_id,
+      </if>
+      <if test="registerTime != null">
+        u_register_time,
+      </if>
+      <if test="lastLoginTime != null">
+        u_last_login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="roleId != null">
+        #{roleId},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.User">
+    <!--@mbg.generated-->
+    update `user`
+    <set>
+      <if test="password != null">
+        u_password = #{password},
+      </if>
+      <if test="roleId != null">
+        u_role_id = #{roleId},
+      </if>
+      <if test="registerTime != null">
+        u_register_time = #{registerTime},
+      </if>
+      <if test="lastLoginTime != null">
+        u_last_login_time = #{lastLoginTime},
+      </if>
+    </set>
+    where u_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.User">
+    <!--@mbg.generated-->
+    update `user`
+    set u_password = #{password},
+      u_role_id = #{roleId},
+      u_register_time = #{registerTime},
+      u_last_login_time = #{lastLoginTime}
+    where u_id = #{id}
+  </update>
+</mapper>

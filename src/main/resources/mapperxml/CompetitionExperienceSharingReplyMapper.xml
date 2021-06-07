@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.CompetitionExperienceSharingReplyMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.CompetitionExperienceSharingReply">
+    <!--@mbg.generated-->
+    <!--@Table competition_experience_sharing_reply-->
+    <id column="cesr_id" property="id" />
+    <result column="cesr_author_user_id" property="authorUserId" />
+    <result column="cesr_sharing_id" property="sharingId" />
+    <result column="cesr_type" property="type" />
+    <result column="cesr_reply_id" property="replyId" />
+    <result column="cesr_reply_user_id" property="replyUserId" />
+    <result column="cesr_content" property="content" />
+    <result column="cesr_status" property="status" />
+    <result column="cesr_post_time" property="postTime" />
+    <result column="cesr_update_time" property="updateTime" />
+  </resultMap>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.CompetitionExperienceSharingReplyVo">
+    <id column="cesr_id" property="id" />
+    <result column="cesr_author_user_id" property="authorUserId" />
+    <result column="cesr_sharing_id" property="sharingId" />
+    <result column="cesr_type" property="type" />
+    <result column="cesr_reply_id" property="replyId" />
+    <result column="cesr_reply_user_id" property="replyUserId" />
+    <result column="cesr_content" property="content" />
+    <result column="cesr_status" property="status" />
+    <result column="cesr_post_time" property="postTime" />
+    <result column="cesr_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    cesr_id, cesr_author_user_id, cesr_sharing_id, cesr_type, cesr_reply_id, cesr_reply_user_id, 
+    cesr_content, cesr_status, cesr_post_time, cesr_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from competition_experience_sharing_reply
+    where cesr_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from competition_experience_sharing_reply
+    where cesr_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="cesr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharingReply" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_experience_sharing_reply (cesr_author_user_id, cesr_sharing_id, cesr_type, cesr_reply_id, cesr_reply_user_id, cesr_content, 
+      cesr_status, cesr_post_time, cesr_update_time)
+    values (#{authorUserId}, #{sharingId}, #{type}, #{replyId}, #{replyUserId}, #{content}, 
+      #{status}, #{postTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="cesr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharingReply" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_experience_sharing_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authorUserId != null">
+        cesr_author_user_id,
+      </if>
+      <if test="sharingId != null">
+        cesr_sharing_id,
+      </if>
+      <if test="type != null">
+        cesr_type,
+      </if>
+      <if test="replyId != null">
+        cesr_reply_id,
+      </if>
+      <if test="replyUserId != null">
+        cesr_reply_user_id,
+      </if>
+      <if test="content != null">
+        cesr_content,
+      </if>
+      <if test="status != null">
+        cesr_status,
+      </if>
+      <if test="postTime != null">
+        cesr_post_time,
+      </if>
+      <if test="updateTime != null">
+        cesr_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authorUserId != null">
+        #{authorUserId},
+      </if>
+      <if test="sharingId != null">
+        #{sharingId},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="replyId != null">
+        #{replyId},
+      </if>
+      <if test="replyUserId != null">
+        #{replyUserId},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="postTime != null">
+        #{postTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharingReply">
+    <!--@mbg.generated-->
+    update competition_experience_sharing_reply
+    <set>
+      <if test="authorUserId != null">
+        cesr_author_user_id = #{authorUserId},
+      </if>
+      <if test="sharingId != null">
+        cesr_sharing_id = #{sharingId},
+      </if>
+      <if test="type != null">
+        cesr_type = #{type},
+      </if>
+      <if test="replyId != null">
+        cesr_reply_id = #{replyId},
+      </if>
+      <if test="replyUserId != null">
+        cesr_reply_user_id = #{replyUserId},
+      </if>
+      <if test="content != null">
+        cesr_content = #{content},
+      </if>
+      <if test="status != null">
+        cesr_status = #{status},
+      </if>
+      <if test="postTime != null">
+        cesr_post_time = #{postTime},
+      </if>
+      <if test="updateTime != null">
+        cesr_update_time = #{updateTime},
+      </if>
+    </set>
+    where cesr_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharingReply">
+    <!--@mbg.generated-->
+    update competition_experience_sharing_reply
+    set cesr_author_user_id = #{authorUserId},
+      cesr_sharing_id = #{sharingId},
+      cesr_type = #{type},
+      cesr_reply_id = #{replyId},
+      cesr_reply_user_id = #{replyUserId},
+      cesr_content = #{content},
+      cesr_status = #{status},
+      cesr_post_time = #{postTime},
+      cesr_update_time = #{updateTime}
+    where cesr_id = #{id}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-24-->
+  <select id="selectReplyUserIdByReplyId" resultType="java.lang.Integer">
+    select cesr_reply_user_id
+    from competition_experience_sharing_reply
+    where cesr_reply_id=#{replyId}
+  </select>
+
+  <select id="selectVoBySharingIdAndTypeAndStatusIn" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from competition_experience_sharing_reply
+    where cesr_sharing_id=#{sharingId} and cesr_type=#{type} and cesr_status in
+    <foreach item="item" index="index" collection="statusCollection"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="selectVoByReplyIdAndTypeAndStatusIn" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from competition_experience_sharing_reply
+    where cesr_reply_id=#{replyId} and cesr_type=#{type} and cesr_status in
+    <foreach item="item" index="index" collection="statusCollection"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="selectVoById" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from competition_experience_sharing_reply
+    where cesr_id=#{id}
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-30-->
+  <update id="updateStatusBySharingIdAndStatus">
+        update competition_experience_sharing_reply
+        set cesr_status=#{updatedStatus}
+        <where>
+            cesr_sharing_id=#{sharingId}
+            <if test="status != null">
+                and cesr_status=#{status}
+            </if>
+        </where>
+    </update>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-30-->
+  <update id="updateStatusByReplyIdAndStatus">
+    update competition_experience_sharing_reply
+    set cesr_status=#{updatedStatus}
+    <where>
+      cesr_reply_id=#{replyId}
+      <if test="status != null">
+        and cesr_status=#{status}
+      </if>
+    </where>
+  </update>
+</mapper>

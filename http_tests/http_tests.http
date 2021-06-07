@@ -1,0 +1,78 @@
+###发送邮箱注册验证码
+GET http://{{host}}/verification/mail/register?receiverAddress=xhxyy2015@gmail.com
+
+###用户注册
+POST http://{{host}}/register/mail
+Content-Type: application/json
+
+{
+  "mail": "yaoyijack@foxmail.com",
+  "nickname": "YY2",
+  "password": "114514",
+  "code": "700536"
+}
+
+###用户邮箱登录
+POST http://{{host}}/login/mail
+Content-Type: application/json
+x-platform-id: 2
+
+{
+  "mail": "yaoyijack@foxmail.com",
+  "password": "114514"
+}
+
+> {% client.global.set("refreshToken",response.headers.valueOf("x-auth-token"));%}
+
+###获取用户个人信息
+GET http://{{host}}/userInfo/me
+x-access-token:{{accessToken}}
+x-Platform-Id: 2
+
+###修改个人信息
+PUT http://{{host}}/userInfo/me
+x-access-token:{{accessToken}}
+Content-Type: application/json
+
+{
+  "signature": "咕叽咕叽咕叽咕叽咕叽"
+}
+
+###登出
+GET http://{{host}}/logout
+x-access-token:{{accessToken}}
+
+###刷新Access Token
+POST http://{{host}}/token/refresh
+x-auth-token:{{refreshToken}}
+x-Platform-Id: 2
+
+> {% client.global.set("accessToken",response.headers.valueOf("x-access-token"));%}
+
+###获取聊天历史
+GET http://{{host}}/message/session/history?pageNum=1&pageSize=5
+x-access-token:{{accessToken}}
+
+###获取会话消息
+GET http://{{host}}/message?targetUserId=2
+x-access-token:{{accessToken}}
+
+###已读所有消息
+PUT http://{{host}}/message/status/read?targetUserId=7
+x-access-token:{{accessToken}}
+
+###发送私信
+POST http://{{host}}/message
+x-access-token:{{accessToken}}
+Content-Type: application/json
+
+{
+  "receiverUserId": 7,
+  "content": "哈哈哈",
+  "contentType": 1
+}
+
+###获取OSS通用文件上传签名
+GET http://{{host}}/oss/signature/upload/public
+x-access-token:{{accessToken}}
+x-Platform-Id: 2

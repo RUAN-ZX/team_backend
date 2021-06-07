@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.OrganizationMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.Organization">
+    <!--@mbg.generated-->
+    <!--@Table organization-->
+    <id column="org_id" property="id" />
+    <result column="org_name" property="name" />
+    <result column="org_avatar_url" property="avatarUrl" />
+    <result column="org_intro" property="intro" />
+    <result column="org_level" property="level" />
+    <result column="org_status" property="status" />
+    <result column="org_create_time" property="createTime" />
+    <result column="org_creator_user_id" property="creatorUserId" />
+    <result column="org_update_time" property="updateTime" />
+  </resultMap>
+  <resultMap id="RoughVoResultMap" type="cn.steateam.lets_team_server.vo.OrganizationRoughVo">
+    <id column="org_id" property="id" />
+    <result column="org_name" property="name" />
+    <result column="org_avatar_url" property="avatarUrl" />
+    <result column="org_level" property="level" />
+    <result column="org_status" property="status" />
+  </resultMap>
+  <resultMap id="DetailedVoResultMap" type="cn.steateam.lets_team_server.vo.OrganizationDetailedVo">
+    <id column="org_id" property="id" />
+    <result column="org_name" property="name" />
+    <result column="org_avatar_url" property="avatarUrl" />
+    <result column="org_intro" property="intro" />
+    <result column="org_level" property="level" />
+    <result column="org_status" property="status" />
+    <result column="org_create_time" property="createTime" />
+    <result column="org_creator_user_id" property="creatorUserId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    org_id, org_name, org_avatar_url, org_intro, org_level, org_status, org_create_time, 
+    org_creator_user_id, org_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where org_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from organization
+    where org_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="org_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Organization" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization (org_name, org_avatar_url, org_intro, org_level, org_status, org_create_time, org_creator_user_id, 
+      org_update_time)
+    values (#{name}, #{avatarUrl}, #{intro}, #{level}, #{status}, #{createTime}, #{creatorUserId}, 
+      #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="org_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Organization" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        org_name,
+      </if>
+      <if test="avatarUrl != null">
+        org_avatar_url,
+      </if>
+      <if test="intro != null">
+        org_intro,
+      </if>
+      <if test="level != null">
+        org_level,
+      </if>
+      <if test="status != null">
+        org_status,
+      </if>
+      <if test="createTime != null">
+        org_create_time,
+      </if>
+      <if test="creatorUserId != null">
+        org_creator_user_id,
+      </if>
+      <if test="updateTime != null">
+        org_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="level != null">
+        #{level},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.Organization">
+    <!--@mbg.generated-->
+    update organization
+    <set>
+      <if test="name != null">
+        org_name = #{name},
+      </if>
+      <if test="avatarUrl != null">
+        org_avatar_url = #{avatarUrl},
+      </if>
+      <if test="intro != null">
+        org_intro = #{intro},
+      </if>
+      <if test="level != null">
+        org_level = #{level},
+      </if>
+      <if test="status != null">
+        org_status = #{status},
+      </if>
+      <if test="createTime != null">
+        org_create_time = #{createTime},
+      </if>
+      <if test="creatorUserId != null">
+        org_creator_user_id = #{creatorUserId},
+      </if>
+      <if test="updateTime != null">
+        org_update_time = #{updateTime},
+      </if>
+    </set>
+    where org_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.Organization">
+    <!--@mbg.generated-->
+    update organization
+    set org_name = #{name},
+      org_avatar_url = #{avatarUrl},
+      org_intro = #{intro},
+      org_level = #{level},
+      org_status = #{status},
+      org_create_time = #{createTime},
+      org_creator_user_id = #{creatorUserId},
+      org_update_time = #{updateTime}
+    where org_id = #{id}
+  </update>
+
+  <select id="selectVoById" resultMap="DetailedVoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from organization
+    where org_id=#{id}
+  </select>
+</mapper>

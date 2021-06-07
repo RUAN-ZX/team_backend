@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.UserResumeBasicMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.UserResumeBasic">
+    <!--@mbg.generated-->
+    <!--@Table user_resume_basic-->
+    <id column="urb_user_id" property="userId" />
+    <result column="urb_true_name" property="trueName" />
+    <result column="urb_school_id" property="schoolId" />
+    <result column="urb_major" property="major" />
+    <result column="urb_admission_date" property="admissionDate" />
+    <result column="urb_tags" property="tags" />
+    <result column="urb_intro" property="intro" />
+    <result column="urb_homepage_url" property="homepageUrl" />
+    <result column="urb_create_time" property="createTime" />
+    <result column="urb_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    urb_user_id, urb_true_name, urb_school_id, urb_major, urb_admission_date, urb_tags, 
+    urb_intro, urb_homepage_url, urb_create_time, urb_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_resume_basic
+    where urb_user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user_resume_basic
+    where urb_user_id = #{userId}
+  </delete>
+  <insert id="insert" parameterType="cn.steateam.lets_team_server.entity.UserResumeBasic">
+    <!--@mbg.generated-->
+    insert into user_resume_basic (urb_user_id, urb_true_name, urb_school_id, urb_major, urb_admission_date, urb_tags, 
+      urb_intro, urb_homepage_url, urb_create_time, urb_update_time)
+    values (#{userId}, #{trueName}, #{schoolId}, #{major}, #{admissionDate}, #{tags}, 
+      #{intro}, #{homepageUrl}, #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.steateam.lets_team_server.entity.UserResumeBasic">
+    <!--@mbg.generated-->
+    insert into user_resume_basic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        urb_user_id,
+      </if>
+      <if test="trueName != null">
+        urb_true_name,
+      </if>
+      <if test="schoolId != null">
+        urb_school_id,
+      </if>
+      <if test="major != null">
+        urb_major,
+      </if>
+      <if test="admissionDate != null">
+        urb_admission_date,
+      </if>
+      <if test="tags != null">
+        urb_tags,
+      </if>
+      <if test="intro != null">
+        urb_intro,
+      </if>
+      <if test="homepageUrl != null">
+        urb_homepage_url,
+      </if>
+      <if test="createTime != null">
+        urb_create_time,
+      </if>
+      <if test="updateTime != null">
+        urb_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="trueName != null">
+        #{trueName},
+      </if>
+      <if test="schoolId != null">
+        #{schoolId},
+      </if>
+      <if test="major != null">
+        #{major},
+      </if>
+      <if test="admissionDate != null">
+        #{admissionDate},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="homepageUrl != null">
+        #{homepageUrl},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.UserResumeBasic">
+    <!--@mbg.generated-->
+    update user_resume_basic
+    <set>
+      <if test="trueName != null">
+        urb_true_name = #{trueName},
+      </if>
+      <if test="schoolId != null">
+        urb_school_id = #{schoolId},
+      </if>
+      <if test="major != null">
+        urb_major = #{major},
+      </if>
+      <if test="admissionDate != null">
+        urb_admission_date = #{admissionDate},
+      </if>
+      <if test="tags != null">
+        urb_tags = #{tags},
+      </if>
+      <if test="intro != null">
+        urb_intro = #{intro},
+      </if>
+      <if test="homepageUrl != null">
+        urb_homepage_url = #{homepageUrl},
+      </if>
+      <if test="createTime != null">
+        urb_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        urb_update_time = #{updateTime},
+      </if>
+    </set>
+    where urb_user_id = #{userId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.UserResumeBasic">
+    <!--@mbg.generated-->
+    update user_resume_basic
+    set urb_true_name = #{trueName},
+      urb_school_id = #{schoolId},
+      urb_major = #{major},
+      urb_admission_date = #{admissionDate},
+      urb_tags = #{tags},
+      urb_intro = #{intro},
+      urb_homepage_url = #{homepageUrl},
+      urb_create_time = #{createTime},
+      urb_update_time = #{updateTime}
+    where urb_user_id = #{userId}
+  </update>
+</mapper>

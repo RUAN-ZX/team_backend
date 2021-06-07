@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.OrganizationRoleMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.OrganizationRole">
+    <!--@mbg.generated-->
+    <!--@Table organization_role-->
+    <id column="or_id" property="id" />
+    <result column="or_name" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    or_id, or_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from organization_role
+    where or_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from organization_role
+    where or_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="or_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.OrganizationRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization_role (or_name)
+    values (#{name})
+  </insert>
+  <insert id="insertSelective" keyColumn="or_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.OrganizationRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        or_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.OrganizationRole">
+    <!--@mbg.generated-->
+    update organization_role
+    <set>
+      <if test="name != null">
+        or_name = #{name},
+      </if>
+    </set>
+    where or_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.OrganizationRole">
+    <!--@mbg.generated-->
+    update organization_role
+    set or_name = #{name}
+    where or_id = #{id}
+  </update>
+</mapper>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.UserResumeHonorMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.UserResumeHonor">
+    <!--@mbg.generated-->
+    <!--@Table user_resume_honor-->
+    <id column="urh_id" property="id" />
+    <result column="urh_user_id" property="userId" />
+    <result column="urh_name" property="name" />
+    <result column="urh_type" property="type" />
+    <result column="urh_acquiring_time" property="acquiringTime" />
+    <result column="urh_supporting_document_url" property="supportingDocumentUrl" />
+    <result column="urh_intro" property="intro" />
+    <result column="urh_create_time" property="createTime" />
+    <result column="urh_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    urh_id, urh_user_id, urh_name, urh_type, urh_acquiring_time, urh_supporting_document_url, urh_intro,
+    urh_create_time, urh_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_resume_honor
+    where urh_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user_resume_honor
+    where urh_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="urh_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.UserResumeHonor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_resume_honor (urh_user_id, urh_name, urh_type, urh_acquiring_time, urh_supporting_document_url, urh_intro,
+      urh_create_time, urh_update_time)
+    values (#{userId}, #{name}, #{type}, #{acquiringTime}, #{supportingDocumentUrl}, #{intro},
+      #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="urh_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.UserResumeHonor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_resume_honor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        urh_user_id,
+      </if>
+      <if test="name != null">
+        urh_name,
+      </if>
+      <if test="type != null">
+        urh_type,
+      </if>
+      <if test="acquiringTime != null">
+        urh_acquiring_time,
+      </if>
+      <if test="supportingDocumentUrl != null">
+        urh_supporting_document_url,
+      </if>
+      <if test="intro != null">
+        urh_intro,
+      </if>
+      <if test="createTime != null">
+        urh_create_time,
+      </if>
+      <if test="updateTime != null">
+        urh_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="acquiringTime != null">
+        #{acquiringTime},
+      </if>
+      <if test="supportingDocumentUrl != null">
+        #{supportingDocumentUrl},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.UserResumeHonor">
+    <!--@mbg.generated-->
+    update user_resume_honor
+    <set>
+      <if test="userId != null">
+        urh_user_id = #{userId},
+      </if>
+      <if test="name != null">
+        urh_name = #{name},
+      </if>
+      <if test="type != null">
+        urh_type = #{type},
+      </if>
+      <if test="acquiringTime != null">
+        urh_acquiring_time = #{acquiringTime},
+      </if>
+      <if test="supportingDocumentUrl != null">
+        urh_supporting_document_url = #{supportingDocumentUrl},
+      </if>
+      <if test="intro != null">
+        urh_intro = #{intro},
+      </if>
+      <if test="createTime != null">
+        urh_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        urh_update_time = #{updateTime},
+      </if>
+    </set>
+    where urh_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.UserResumeHonor">
+    <!--@mbg.generated-->
+    update user_resume_honor
+    set urh_user_id = #{userId},
+      urh_name = #{name},
+      urh_type = #{type},
+      urh_acquiring_time = #{acquiringTime},
+      urh_supporting_document_url = #{supportingDocumentUrl},
+      urh_intro = #{intro},
+      urh_create_time = #{createTime},
+      urh_update_time = #{updateTime}
+    where urh_id = #{id}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2021-02-13-->
+  <select id="selectByUserId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user_resume_honor
+        where urh_user_id=#{userId}
+    </select>
+</mapper>

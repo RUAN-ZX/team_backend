@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.OrganizationMemberMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.OrganizationMember">
+    <!--@mbg.generated-->
+    <!--@Table organization_member-->
+    <id column="om_org_id" property="orgId" />
+    <id column="om_user_id" property="userId" />
+    <result column="om_role_id" property="roleId" />
+    <result column="om_entering_time" property="enteringTime" />
+    <result column="om_create_time" property="createTime" />
+    <result column="om_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    om_org_id, om_user_id, om_role_id, om_entering_time, om_create_time, om_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from organization_member
+    where om_org_id = #{orgId}
+      and om_user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from organization_member
+    where om_org_id = #{orgId}
+      and om_user_id = #{userId}
+  </delete>
+  <insert id="insert" parameterType="cn.steateam.lets_team_server.entity.OrganizationMember">
+    <!--@mbg.generated-->
+    insert into organization_member (om_org_id, om_user_id, om_role_id, om_entering_time, om_create_time, om_update_time
+      )
+    values (#{orgId}, #{userId}, #{roleId}, #{enteringTime}, #{createTime}, #{updateTime}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.steateam.lets_team_server.entity.OrganizationMember">
+    <!--@mbg.generated-->
+    insert into organization_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        om_org_id,
+      </if>
+      <if test="userId != null">
+        om_user_id,
+      </if>
+      <if test="roleId != null">
+        om_role_id,
+      </if>
+      <if test="enteringTime != null">
+        om_entering_time,
+      </if>
+      <if test="createTime != null">
+        om_create_time,
+      </if>
+      <if test="updateTime != null">
+        om_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="roleId != null">
+        #{roleId},
+      </if>
+      <if test="enteringTime != null">
+        #{enteringTime},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.OrganizationMember">
+    <!--@mbg.generated-->
+    update organization_member
+    <set>
+      <if test="roleId != null">
+        om_role_id = #{roleId},
+      </if>
+      <if test="enteringTime != null">
+        om_entering_time = #{enteringTime},
+      </if>
+      <if test="createTime != null">
+        om_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        om_update_time = #{updateTime},
+      </if>
+    </set>
+    where om_org_id = #{orgId}
+      and om_user_id = #{userId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.OrganizationMember">
+    <!--@mbg.generated-->
+    update organization_member
+    set om_role_id = #{roleId},
+      om_entering_time = #{enteringTime},
+      om_create_time = #{createTime},
+      om_update_time = #{updateTime}
+    where om_org_id = #{orgId}
+      and om_user_id = #{userId}
+  </update>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.OrganizationMemberVo">
+    <id column="om_org_id" property="orgId" />
+    <id column="om_user_id" property="userId" />
+    <result column="om_role_id" property="roleId" />
+    <result column="om_entering_time" property="enteringTime" />
+  </resultMap>
+
+  <select id="selectVoByOrgId" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from organization_member
+        where om_org_id=#{orgId}
+    </select>
+</mapper>

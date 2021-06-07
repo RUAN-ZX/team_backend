@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.CompetitionAnswerMapper">
+    <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.CompetitionAnswer">
+        <!--@mbg.generated-->
+        <!--@Table competition_answer-->
+        <id column="ca_id" property="id"/>
+        <result column="ca_author_user_id" property="authorUserId"/>
+        <result column="ca_question_id" property="questionId"/>
+        <result column="ca_content" property="content"/>
+        <result column="ca_status" property="status"/>
+        <result column="ca_post_time" property="postTime"/>
+        <result column="ca_update_time" property="updateTime"/>
+    </resultMap>
+    <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.CompetitionAnswerVo">
+        <id column="ca_id" property="id"/>
+        <result column="ca_author_user_id" property="authorUserId"/>
+        <result column="ca_question_id" property="questionId"/>
+        <result column="ca_content" property="content"/>
+        <result column="ca_status" property="status"/>
+        <result column="ca_post_time" property="postTime"/>
+        <result column="ca_update_time" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        ca_id, ca_author_user_id, ca_question_id, ca_content, ca_status, ca_post_time, ca_update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from competition_answer
+        where ca_id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from competition_answer
+        where ca_id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="ca_id" keyProperty="id"
+            parameterType="cn.steateam.lets_team_server.entity.CompetitionAnswer" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into competition_answer (ca_author_user_id, ca_question_id, ca_content, ca_status, ca_post_time,
+                                        ca_update_time)
+        values (#{authorUserId}, #{questionId}, #{content}, #{status}, #{postTime}, #{updateTime})
+    </insert>
+    <insert id="insertSelective" keyColumn="ca_id" keyProperty="id"
+            parameterType="cn.steateam.lets_team_server.entity.CompetitionAnswer" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into competition_answer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="authorUserId != null">
+                ca_author_user_id,
+            </if>
+            <if test="questionId != null">
+                ca_question_id,
+            </if>
+            <if test="content != null">
+                ca_content,
+            </if>
+            <if test="status != null">
+                ca_status,
+            </if>
+            <if test="postTime != null">
+                ca_post_time,
+            </if>
+            <if test="updateTime != null">
+                ca_update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="authorUserId != null">
+                #{authorUserId},
+            </if>
+            <if test="questionId != null">
+                #{questionId},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="postTime != null">
+                #{postTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.CompetitionAnswer">
+        <!--@mbg.generated-->
+        update competition_answer
+        <set>
+            <if test="authorUserId != null">
+                ca_author_user_id = #{authorUserId},
+            </if>
+            <if test="questionId != null">
+                ca_question_id = #{questionId},
+            </if>
+            <if test="content != null">
+                ca_content = #{content},
+            </if>
+            <if test="status != null">
+                ca_status = #{status},
+            </if>
+            <if test="postTime != null">
+                ca_post_time = #{postTime},
+            </if>
+            <if test="updateTime != null">
+                ca_update_time = #{updateTime},
+            </if>
+        </set>
+        where ca_id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.CompetitionAnswer">
+        <!--@mbg.generated-->
+        update competition_answer
+        set ca_author_user_id = #{authorUserId},
+            ca_question_id    = #{questionId},
+            ca_content        = #{content},
+            ca_status         = #{status},
+            ca_post_time      = #{postTime},
+            ca_update_time    = #{updateTime}
+        where ca_id = #{id}
+    </update>
+
+    <select id="selectVoById" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from competition_answer
+        where ca_id = #{id}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-21-->
+    <select id="countByQuestionIdAndStatusNotIn" resultType="java.lang.Integer">
+        select count(1)
+        from competition_answer
+        where ca_question_id=#{questionId} and ca_status not in
+        <foreach item="item" index="index" collection="statusCollection"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectVoByQuestionIdAndStatusIn" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from competition_answer
+        where ca_question_id=#{questionId} and ca_status in
+        <foreach item="item" index="index" collection="statusCollection"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

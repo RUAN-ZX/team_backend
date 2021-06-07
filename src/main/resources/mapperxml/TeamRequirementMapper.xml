@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.TeamRequirementMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.TeamRequirement">
+    <!--@mbg.generated-->
+    <!--@Table team_requirement-->
+    <id column="tr_id" property="id" />
+    <result column="tr_user_id" property="userId" />
+    <result column="tr_tags" property="tags" />
+    <result column="tr_intro" property="intro" />
+    <result column="tr_content" property="content" />
+    <result column="tr_post_time" property="postTime" />
+    <result column="tr_require_status" property="requireStatus" />
+    <result column="tr_closed_time" property="closedTime" />
+    <result column="tr_status" property="status" />
+    <result column="tr_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tr_id, tr_user_id, tr_tags, tr_intro, tr_content, tr_post_time, tr_require_status, 
+    tr_closed_time, tr_status, tr_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from team_requirement
+    where tr_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from team_requirement
+    where tr_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="tr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.TeamRequirement" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into team_requirement (tr_user_id, tr_tags, tr_intro, tr_content, tr_post_time, tr_require_status, 
+      tr_closed_time, tr_status, tr_update_time)
+    values (#{userId}, #{tags}, #{intro}, #{content}, #{postTime}, #{requireStatus}, 
+      #{closedTime}, #{status}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="tr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.TeamRequirement" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into team_requirement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        tr_user_id,
+      </if>
+      <if test="tags != null">
+        tr_tags,
+      </if>
+      <if test="intro != null">
+        tr_intro,
+      </if>
+      <if test="content != null">
+        tr_content,
+      </if>
+      <if test="postTime != null">
+        tr_post_time,
+      </if>
+      <if test="requireStatus != null">
+        tr_require_status,
+      </if>
+      <if test="closedTime != null">
+        tr_closed_time,
+      </if>
+      <if test="status != null">
+        tr_status,
+      </if>
+      <if test="updateTime != null">
+        tr_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="postTime != null">
+        #{postTime},
+      </if>
+      <if test="requireStatus != null">
+        #{requireStatus},
+      </if>
+      <if test="closedTime != null">
+        #{closedTime},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.TeamRequirement">
+    <!--@mbg.generated-->
+    update team_requirement
+    <set>
+      <if test="userId != null">
+        tr_user_id = #{userId},
+      </if>
+      <if test="tags != null">
+        tr_tags = #{tags},
+      </if>
+      <if test="intro != null">
+        tr_intro = #{intro},
+      </if>
+      <if test="content != null">
+        tr_content = #{content},
+      </if>
+      <if test="postTime != null">
+        tr_post_time = #{postTime},
+      </if>
+      <if test="requireStatus != null">
+        tr_require_status = #{requireStatus},
+      </if>
+      <if test="closedTime != null">
+        tr_closed_time = #{closedTime},
+      </if>
+      <if test="status != null">
+        tr_status = #{status},
+      </if>
+      <if test="updateTime != null">
+        tr_update_time = #{updateTime},
+      </if>
+    </set>
+    where tr_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.TeamRequirement">
+    <!--@mbg.generated-->
+    update team_requirement
+    set tr_user_id = #{userId},
+      tr_tags = #{tags},
+      tr_intro = #{intro},
+      tr_content = #{content},
+      tr_post_time = #{postTime},
+      tr_require_status = #{requireStatus},
+      tr_closed_time = #{closedTime},
+      tr_status = #{status},
+      tr_update_time = #{updateTime}
+    where tr_id = #{id}
+  </update>
+  <resultMap id="DetailedVoResultMap" type="cn.steateam.lets_team_server.vo.TeamRequirementDetailedVo">
+    <id column="tr_id" property="id" />
+    <result column="tr_user_id" property="userId" />
+    <result column="tr_tags" property="tags" />
+    <result column="tr_intro" property="intro" />
+    <result column="tr_content" property="content" />
+    <result column="tr_post_time" property="postTime" />
+    <result column="tr_require_status" property="requireStatus" />
+    <result column="tr_closed_time" property="closedTime" />
+    <result column="tr_status" property="status" />
+  </resultMap>
+
+  <select id="selectVoById" resultMap="DetailedVoResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from team_requirement
+    where tr_id=#{id}
+  </select>
+</mapper>

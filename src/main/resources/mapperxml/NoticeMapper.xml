@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.NoticeMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.Notice">
+    <!--@mbg.generated-->
+    <!--@Table notice-->
+    <id column="no_id" property="id" />
+    <result column="no_receiver_user_id" property="receiverUserId" />
+    <result column="no_type" property="type" />
+    <result column="no_title" property="title" />
+    <result column="no_content" property="content" />
+    <result column="no_sending_time" property="sendingTime" />
+    <result column="no_read_status" property="readStatus" />
+    <result column="no_read_time" property="readTime" />
+    <result column="no_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    no_id, no_receiver_user_id, no_type, no_title, no_content, no_sending_time, no_read_status, 
+    no_read_time, no_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from notice
+    where no_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from notice
+    where no_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="no_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Notice" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into notice (no_receiver_user_id, no_type, no_title, no_content, no_sending_time, no_read_status, 
+      no_read_time, no_update_time)
+    values (#{receiverUserId}, #{type}, #{title}, #{content}, #{sendingTime}, #{readStatus}, 
+      #{readTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="no_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Notice" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="receiverUserId != null">
+        no_receiver_user_id,
+      </if>
+      <if test="type != null">
+        no_type,
+      </if>
+      <if test="title != null">
+        no_title,
+      </if>
+      <if test="content != null">
+        no_content,
+      </if>
+      <if test="sendingTime != null">
+        no_sending_time,
+      </if>
+      <if test="readStatus != null">
+        no_read_status,
+      </if>
+      <if test="readTime != null">
+        no_read_time,
+      </if>
+      <if test="updateTime != null">
+        no_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="receiverUserId != null">
+        #{receiverUserId},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="sendingTime != null">
+        #{sendingTime},
+      </if>
+      <if test="readStatus != null">
+        #{readStatus},
+      </if>
+      <if test="readTime != null">
+        #{readTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.Notice">
+    <!--@mbg.generated-->
+    update notice
+    <set>
+      <if test="receiverUserId != null">
+        no_receiver_user_id = #{receiverUserId},
+      </if>
+      <if test="type != null">
+        no_type = #{type},
+      </if>
+      <if test="title != null">
+        no_title = #{title},
+      </if>
+      <if test="content != null">
+        no_content = #{content},
+      </if>
+      <if test="sendingTime != null">
+        no_sending_time = #{sendingTime},
+      </if>
+      <if test="readStatus != null">
+        no_read_status = #{readStatus},
+      </if>
+      <if test="readTime != null">
+        no_read_time = #{readTime},
+      </if>
+      <if test="updateTime != null">
+        no_update_time = #{updateTime},
+      </if>
+    </set>
+    where no_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.Notice">
+    <!--@mbg.generated-->
+    update notice
+    set no_receiver_user_id = #{receiverUserId},
+      no_type = #{type},
+      no_title = #{title},
+      no_content = #{content},
+      no_sending_time = #{sendingTime},
+      no_read_status = #{readStatus},
+      no_read_time = #{readTime},
+      no_update_time = #{updateTime}
+    where no_id = #{id}
+  </update>
+    <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.NoticeVo">
+        <result column="no_type" property="type" />
+        <result column="no_title" property="title" />
+        <result column="no_content" property="content" />
+        <result column="no_sending_time" property="sendingTime" />
+        <result column="no_read_status" property="readStatus" />
+        <result column="no_read_time" property="readTime" />
+    </resultMap>
+
+    <select id="selectVoById" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from notice
+        where no_id = #{id}
+    </select>
+
+    <select id="selectVoByReceiverUserId" resultMap="VoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from notice
+        where no_receiver_user_id = #{receiverUserId}
+        order by no_sending_time desc
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-02-15-->
+    <update id="updateReadStatusAndReadTimeById">
+        update notice
+        set no_read_status=#{updatedReadStatus},
+            no_read_time=#{updatedReadTime}
+        where no_id = #{id}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2021-02-15-->
+    <update id="updateReadStatusAndReadTimeByReceiverUserIdAndReadStatus">
+        update notice
+        set no_read_status=#{updatedReadStatus},
+            no_read_time=#{updatedReadTime}
+        where no_receiver_user_id = #{receiverUserId}
+          and no_read_status = #{readStatus}
+    </update>
+</mapper>

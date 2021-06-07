@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.CompetitionExperienceSharingMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.CompetitionExperienceSharing">
+    <!--@mbg.generated-->
+    <!--@Table competition_experience_sharing-->
+    <id column="ces_id" property="id" />
+    <result column="ces_comp_id" property="compId" />
+    <result column="ces_author_user_id" property="authorUserId" />
+    <result column="ces_tags" property="tags" />
+    <result column="ces_title" property="title" />
+    <result column="ces_content" property="content" />
+    <result column="ces_status" property="status" />
+    <result column="ces_post_time" property="postTime" />
+    <result column="ces_update_time" property="updateTime" />
+  </resultMap>
+  <resultMap id="DetailedVoResultMap" type="cn.steateam.lets_team_server.vo.CompetitionExperienceSharingDetailedVo">
+    <id column="ces_id" property="id" />
+    <result column="ces_comp_id" property="compId" />
+    <result column="ces_author_user_id" property="authorUserId" />
+    <result column="ces_tags" property="tags" />
+    <result column="ces_title" property="title" />
+    <result column="ces_content" property="content" />
+    <result column="ces_status" property="status" />
+    <result column="ces_post_time" property="postTime" />
+    <result column="ces_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ces_id, ces_comp_id, ces_author_user_id, ces_tags, ces_title, ces_content, ces_status, 
+    ces_post_time, ces_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from competition_experience_sharing
+    where ces_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from competition_experience_sharing
+    where ces_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="ces_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharing" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_experience_sharing (ces_comp_id, ces_author_user_id, ces_tags, ces_title, ces_content, ces_status, ces_post_time, 
+      ces_update_time)
+    values (#{compId}, #{authorUserId}, #{tags}, #{title}, #{content}, #{status}, #{postTime}, 
+      #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="ces_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharing" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into competition_experience_sharing
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="compId != null">
+        ces_comp_id,
+      </if>
+      <if test="authorUserId != null">
+        ces_author_user_id,
+      </if>
+      <if test="tags != null">
+        ces_tags,
+      </if>
+      <if test="title != null">
+        ces_title,
+      </if>
+      <if test="content != null">
+        ces_content,
+      </if>
+      <if test="status != null">
+        ces_status,
+      </if>
+      <if test="postTime != null">
+        ces_post_time,
+      </if>
+      <if test="updateTime != null">
+        ces_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="compId != null">
+        #{compId},
+      </if>
+      <if test="authorUserId != null">
+        #{authorUserId},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="postTime != null">
+        #{postTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharing">
+    <!--@mbg.generated-->
+    update competition_experience_sharing
+    <set>
+      <if test="compId != null">
+        ces_comp_id = #{compId},
+      </if>
+      <if test="authorUserId != null">
+        ces_author_user_id = #{authorUserId},
+      </if>
+      <if test="tags != null">
+        ces_tags = #{tags},
+      </if>
+      <if test="title != null">
+        ces_title = #{title},
+      </if>
+      <if test="content != null">
+        ces_content = #{content},
+      </if>
+      <if test="status != null">
+        ces_status = #{status},
+      </if>
+      <if test="postTime != null">
+        ces_post_time = #{postTime},
+      </if>
+      <if test="updateTime != null">
+        ces_update_time = #{updateTime},
+      </if>
+    </set>
+    where ces_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.CompetitionExperienceSharing">
+    <!--@mbg.generated-->
+    update competition_experience_sharing
+    set ces_comp_id = #{compId},
+      ces_author_user_id = #{authorUserId},
+      ces_tags = #{tags},
+      ces_title = #{title},
+      ces_content = #{content},
+      ces_status = #{status},
+      ces_post_time = #{postTime},
+      ces_update_time = #{updateTime}
+    where ces_id = #{id}
+  </update>
+
+  <select id="selectVoById" resultMap="DetailedVoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from competition_experience_sharing
+    where ces_id=#{id}
+  </select>
+</mapper>

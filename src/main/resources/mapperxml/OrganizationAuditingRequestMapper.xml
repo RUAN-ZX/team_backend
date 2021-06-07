@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.OrganizationAuditingRequestMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.OrganizationAuditingRequest">
+    <!--@mbg.generated-->
+    <!--@Table organization_auditing_request-->
+    <id column="oaq_id" property="id" />
+    <result column="oaq_organization_id" property="organizationId" />
+    <result column="oaq_user_id" property="userId" />
+    <result column="oaq_level" property="level" />
+    <result column="oaq_file_url" property="fileUrl" />
+    <result column="oaq_status" property="status" />
+    <result column="oaq_create_time" property="createTime" />
+    <result column="oaq_auditor_user_id" property="auditorUserId" />
+    <result column="oaq_auditing_time" property="auditingTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    oaq_id, oaq_organization_id, oaq_user_id, oaq_level, oaq_file_url, oaq_status, oaq_create_time, 
+    oaq_auditor_user_id, oaq_auditing_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from organization_auditing_request
+    where oaq_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from organization_auditing_request
+    where oaq_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="oaq_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.OrganizationAuditingRequest" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization_auditing_request (oaq_organization_id, oaq_user_id, oaq_level, oaq_file_url, oaq_status, oaq_create_time, 
+      oaq_auditor_user_id, oaq_auditing_time)
+    values (#{organizationId}, #{userId}, #{level}, #{fileUrl}, #{status}, #{createTime}, 
+      #{auditorUserId}, #{auditingTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="oaq_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.OrganizationAuditingRequest" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into organization_auditing_request
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="organizationId != null">
+        oaq_organization_id,
+      </if>
+      <if test="userId != null">
+        oaq_user_id,
+      </if>
+      <if test="level != null">
+        oaq_level,
+      </if>
+      <if test="fileUrl != null">
+        oaq_file_url,
+      </if>
+      <if test="status != null">
+        oaq_status,
+      </if>
+      <if test="createTime != null">
+        oaq_create_time,
+      </if>
+      <if test="auditorUserId != null">
+        oaq_auditor_user_id,
+      </if>
+      <if test="auditingTime != null">
+        oaq_auditing_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="organizationId != null">
+        #{organizationId},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="level != null">
+        #{level},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="auditorUserId != null">
+        #{auditorUserId},
+      </if>
+      <if test="auditingTime != null">
+        #{auditingTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.OrganizationAuditingRequest">
+    <!--@mbg.generated-->
+    update organization_auditing_request
+    <set>
+      <if test="organizationId != null">
+        oaq_organization_id = #{organizationId},
+      </if>
+      <if test="userId != null">
+        oaq_user_id = #{userId},
+      </if>
+      <if test="level != null">
+        oaq_level = #{level},
+      </if>
+      <if test="fileUrl != null">
+        oaq_file_url = #{fileUrl},
+      </if>
+      <if test="status != null">
+        oaq_status = #{status},
+      </if>
+      <if test="createTime != null">
+        oaq_create_time = #{createTime},
+      </if>
+      <if test="auditorUserId != null">
+        oaq_auditor_user_id = #{auditorUserId},
+      </if>
+      <if test="auditingTime != null">
+        oaq_auditing_time = #{auditingTime},
+      </if>
+    </set>
+    where oaq_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.OrganizationAuditingRequest">
+    <!--@mbg.generated-->
+    update organization_auditing_request
+    set oaq_organization_id = #{organizationId},
+      oaq_user_id = #{userId},
+      oaq_level = #{level},
+      oaq_file_url = #{fileUrl},
+      oaq_status = #{status},
+      oaq_create_time = #{createTime},
+      oaq_auditor_user_id = #{auditorUserId},
+      oaq_auditing_time = #{auditingTime}
+    where oaq_id = #{id}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-27-->
+  <select id="selectByOrganizationIdAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from organization_auditing_request
+        where oaq_organization_id=#{organizationId} and oaq_status=#{status}
+    </select>
+</mapper>

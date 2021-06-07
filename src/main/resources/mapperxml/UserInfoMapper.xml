@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.UserInfo">
+    <!--@mbg.generated-->
+    <!--@Table user_info-->
+    <id column="ui_user_id" property="userId" />
+    <result column="ui_nickname" property="nickname" />
+    <result column="ui_avatar_url" property="avatarUrl" />
+    <result column="ui_tags" property="tags" />
+    <result column="ui_signature" property="signature" />
+    <result column="ui_experience" property="experience" />
+    <result column="ui_create_time" property="createTime" />
+    <result column="ui_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ui_user_id, ui_nickname, ui_avatar_url, ui_tags, ui_signature, ui_experience, ui_create_time, 
+    ui_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where ui_user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user_info
+    where ui_user_id = #{userId}
+  </delete>
+  <insert id="insert" parameterType="cn.steateam.lets_team_server.entity.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info (ui_user_id, ui_nickname, ui_avatar_url, ui_tags, ui_signature, ui_experience, 
+      ui_create_time, ui_update_time)
+    values (#{userId}, #{nickname}, #{avatarUrl}, #{tags}, #{signature}, #{experience}, 
+      #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.steateam.lets_team_server.entity.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        ui_user_id,
+      </if>
+      <if test="nickname != null">
+        ui_nickname,
+      </if>
+      <if test="avatarUrl != null">
+        ui_avatar_url,
+      </if>
+      <if test="tags != null">
+        ui_tags,
+      </if>
+      <if test="signature != null">
+        ui_signature,
+      </if>
+      <if test="experience != null">
+        ui_experience,
+      </if>
+      <if test="createTime != null">
+        ui_create_time,
+      </if>
+      <if test="updateTime != null">
+        ui_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="nickname != null">
+        #{nickname},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="signature != null">
+        #{signature},
+      </if>
+      <if test="experience != null">
+        #{experience},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.UserInfo">
+    <!--@mbg.generated-->
+    update user_info
+    <set>
+      <if test="nickname != null">
+        ui_nickname = #{nickname},
+      </if>
+      <if test="avatarUrl != null">
+        ui_avatar_url = #{avatarUrl},
+      </if>
+      <if test="tags != null">
+        ui_tags = #{tags},
+      </if>
+      <if test="signature != null">
+        ui_signature = #{signature},
+      </if>
+      <if test="experience != null">
+        ui_experience = #{experience},
+      </if>
+      <if test="createTime != null">
+        ui_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        ui_update_time = #{updateTime},
+      </if>
+    </set>
+    where ui_user_id = #{userId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.UserInfo">
+    <!--@mbg.generated-->
+    update user_info
+    set ui_nickname = #{nickname},
+      ui_avatar_url = #{avatarUrl},
+      ui_tags = #{tags},
+      ui_signature = #{signature},
+      ui_experience = #{experience},
+      ui_create_time = #{createTime},
+      ui_update_time = #{updateTime}
+    where ui_user_id = #{userId}
+  </update>
+</mapper>

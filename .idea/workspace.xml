@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="11aa21ea-47a3-4eb4-955e-1ca87dd4675c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tWtniijR3VQcUvtOBTXLmWOUTa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yy/lets_team_server" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunManager">
+    <configuration name="LetsTeamServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="lets_team_server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.steateam.lets_team_server.LetsTeamServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11aa21ea-47a3-4eb4-955e-1ca87dd4675c" name="Default Changelist" comment="" />
+      <created>1622896841352</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622896841352</updated>
+      <workItem from="1622896846349" duration="344000" />
+      <workItem from="1622959932369" duration="1203000" />
+      <workItem from="1622962327098" duration="1761000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="767" y="429" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1622981809080">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="767" y="429" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1842.1080/-1920.2.1474.864@0.0.1842.1080" timestamp="1622981809080" />
+    <state x="701" y="295" key="FileChooserDialogImpl" timestamp="1622981825778">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="701" y="295" key="FileChooserDialogImpl/0.0.1842.1080/-1920.2.1474.864@0.0.1842.1080" timestamp="1622981825778" />
+  </component>
+</project>

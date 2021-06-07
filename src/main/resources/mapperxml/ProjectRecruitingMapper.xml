@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.ProjectRecruitingMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.ProjectRecruiting">
+    <!--@mbg.generated-->
+    <!--@Table project_recruiting-->
+    <id column="pr_id" property="id" />
+    <result column="pr_project_id" property="projectId" />
+    <result column="pr_creator_user_id" property="creatorUserId" />
+    <result column="pr_content" property="content" />
+    <result column="pr_number" property="number" />
+    <result column="pr_tags" property="tags" />
+    <result column="pr_post_time" property="postTime" />
+    <result column="pr_status" property="status" />
+    <result column="pr_recruit_status" property="recruitStatus" />
+    <result column="pr_closed_time" property="closedTime" />
+    <result column="pr_update_time" property="updateTime" />
+  </resultMap>
+  <resultMap id="DetailedVoResultMap" type="cn.steateam.lets_team_server.vo.ProjectRecruitingDetailedVo">
+    <id column="pr_id" property="id" />
+    <result column="pr_project_id" property="projectId" />
+    <result column="pr_creator_user_id" property="creatorUserId" />
+    <result column="pr_content" property="content" />
+    <result column="pr_number" property="number" />
+    <result column="pr_tags" property="tags" />
+    <result column="pr_post_time" property="postTime" />
+    <result column="pr_status" property="status" />
+    <result column="pr_recruit_status" property="recruitStatus" />
+    <result column="pr_closed_time" property="closedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pr_id, pr_project_id, pr_creator_user_id, pr_content, pr_number, pr_tags, pr_post_time, 
+    pr_status, pr_recruit_status, pr_closed_time, pr_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from project_recruiting
+    where pr_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from project_recruiting
+    where pr_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="pr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.ProjectRecruiting" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project_recruiting (pr_project_id, pr_creator_user_id, pr_content, pr_number, pr_tags, pr_post_time, 
+      pr_status, pr_recruit_status, pr_closed_time, pr_update_time)
+    values (#{projectId}, #{creatorUserId}, #{content}, #{number}, #{tags}, #{postTime}, 
+      #{status}, #{recruitStatus}, #{closedTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="pr_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.ProjectRecruiting" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project_recruiting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        pr_project_id,
+      </if>
+      <if test="creatorUserId != null">
+        pr_creator_user_id,
+      </if>
+      <if test="content != null">
+        pr_content,
+      </if>
+      <if test="number != null">
+        pr_number,
+      </if>
+      <if test="tags != null">
+        pr_tags,
+      </if>
+      <if test="postTime != null">
+        pr_post_time,
+      </if>
+      <if test="status != null">
+        pr_status,
+      </if>
+      <if test="recruitStatus != null">
+        pr_recruit_status,
+      </if>
+      <if test="closedTime != null">
+        pr_closed_time,
+      </if>
+      <if test="updateTime != null">
+        pr_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        #{projectId},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="number != null">
+        #{number},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="postTime != null">
+        #{postTime},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="recruitStatus != null">
+        #{recruitStatus},
+      </if>
+      <if test="closedTime != null">
+        #{closedTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.ProjectRecruiting">
+    <!--@mbg.generated-->
+    update project_recruiting
+    <set>
+      <if test="projectId != null">
+        pr_project_id = #{projectId},
+      </if>
+      <if test="creatorUserId != null">
+        pr_creator_user_id = #{creatorUserId},
+      </if>
+      <if test="content != null">
+        pr_content = #{content},
+      </if>
+      <if test="number != null">
+        pr_number = #{number},
+      </if>
+      <if test="tags != null">
+        pr_tags = #{tags},
+      </if>
+      <if test="postTime != null">
+        pr_post_time = #{postTime},
+      </if>
+      <if test="status != null">
+        pr_status = #{status},
+      </if>
+      <if test="recruitStatus != null">
+        pr_recruit_status = #{recruitStatus},
+      </if>
+      <if test="closedTime != null">
+        pr_closed_time = #{closedTime},
+      </if>
+      <if test="updateTime != null">
+        pr_update_time = #{updateTime},
+      </if>
+    </set>
+    where pr_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.ProjectRecruiting">
+    <!--@mbg.generated-->
+    update project_recruiting
+    set pr_project_id = #{projectId},
+      pr_creator_user_id = #{creatorUserId},
+      pr_content = #{content},
+      pr_number = #{number},
+      pr_tags = #{tags},
+      pr_post_time = #{postTime},
+      pr_status = #{status},
+      pr_recruit_status = #{recruitStatus},
+      pr_closed_time = #{closedTime},
+      pr_update_time = #{updateTime}
+    where pr_id = #{id}
+  </update>
+
+  <select id="selectVoById" resultMap="DetailedVoResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from project_recruiting
+    where pr_id=#{id}
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-30-->
+  <update id="updateStatusByProjectIdAndStatus">
+    update project_recruiting
+    set pr_status=#{updatedStatus}
+    <where>
+      pr_project_id=#{projectId}
+      <if test="status != null">
+        and pr_status=#{status}
+      </if>
+    </where>
+  </update>
+</mapper>

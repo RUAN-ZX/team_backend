@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.TeamRequirementResumeHonorMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.TeamRequirementResumeHonor">
+    <!--@mbg.generated-->
+    <!--@Table team_requirement_resume_honor-->
+    <id column="trrh_id" property="id" />
+    <result column="trrh_requirement_id" property="requirementId" />
+    <result column="trrh_name" property="name" />
+    <result column="trrh_acquiring_time" property="acquiringTime" />
+    <result column="trrh_supporting_document_url" property="supportingDocumentUrl" />
+    <result column="trrh_intro" property="intro" />
+    <result column="trrh_create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    trrh_id, trrh_requirement_id, trrh_name, trrh_acquiring_time, trrh_supporting_document_url, 
+    trrh_intro, trrh_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from team_requirement_resume_honor
+    where trrh_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from team_requirement_resume_honor
+    where trrh_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="trrh_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeHonor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into team_requirement_resume_honor (trrh_requirement_id, trrh_name, trrh_acquiring_time, trrh_supporting_document_url, trrh_intro, 
+      trrh_create_time)
+    values (#{requirementId}, #{name}, #{acquiringTime}, #{supportingDocumentUrl}, #{intro}, 
+      #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="trrh_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeHonor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into team_requirement_resume_honor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="requirementId != null">
+        trrh_requirement_id,
+      </if>
+      <if test="name != null">
+        trrh_name,
+      </if>
+      <if test="acquiringTime != null">
+        trrh_acquiring_time,
+      </if>
+      <if test="supportingDocumentUrl != null">
+        trrh_supporting_document_url,
+      </if>
+      <if test="intro != null">
+        trrh_intro,
+      </if>
+      <if test="createTime != null">
+        trrh_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="requirementId != null">
+        #{requirementId},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="acquiringTime != null">
+        #{acquiringTime},
+      </if>
+      <if test="supportingDocumentUrl != null">
+        #{supportingDocumentUrl},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeHonor">
+    <!--@mbg.generated-->
+    update team_requirement_resume_honor
+    <set>
+      <if test="requirementId != null">
+        trrh_requirement_id = #{requirementId},
+      </if>
+      <if test="name != null">
+        trrh_name = #{name},
+      </if>
+      <if test="acquiringTime != null">
+        trrh_acquiring_time = #{acquiringTime},
+      </if>
+      <if test="supportingDocumentUrl != null">
+        trrh_supporting_document_url = #{supportingDocumentUrl},
+      </if>
+      <if test="intro != null">
+        trrh_intro = #{intro},
+      </if>
+      <if test="createTime != null">
+        trrh_create_time = #{createTime},
+      </if>
+    </set>
+    where trrh_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.TeamRequirementResumeHonor">
+    <!--@mbg.generated-->
+    update team_requirement_resume_honor
+    set trrh_requirement_id = #{requirementId},
+      trrh_name = #{name},
+      trrh_acquiring_time = #{acquiringTime},
+      trrh_supporting_document_url = #{supportingDocumentUrl},
+      trrh_intro = #{intro},
+      trrh_create_time = #{createTime}
+    where trrh_id = #{id}
+  </update>
+  <resultMap id="VoResultMap" type="cn.steateam.lets_team_server.vo.TeamRequirementResumeHonorVo">
+    <id column="trrh_id" property="id" />
+    <result column="trrh_requirement_id" property="requirementId" />
+    <result column="trrh_name" property="name" />
+    <result column="trrh_acquiring_time" property="acquiringTime" />
+    <result column="trrh_supporting_document_url" property="supportingDocumentUrl" />
+    <result column="trrh_intro" property="intro" />
+  </resultMap>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-20-->
+  <insert id="insertList" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO team_requirement_resume_honor(
+        trrh_requirement_id,
+        trrh_name,
+        trrh_acquiring_time,
+        trrh_supporting_document_url,
+        trrh_intro
+        )VALUES
+        <foreach collection="list" index="index" item="element" separator=",">
+            (
+            #{element.requirementId},
+            #{element.name},
+            #{element.acquiringTime},
+            #{element.supportingDocumentUrl},
+            #{element.intro}
+            )
+        </foreach>
+    </insert>
+
+  <select id="selectVoByRequirementId" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from team_requirement_resume_honor
+    where trrh_requirement_id=#{requirementId}
+  </select>
+</mapper>

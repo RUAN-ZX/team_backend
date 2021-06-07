@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.steateam.lets_team_server.mapper.ProjectMapper">
+  <resultMap id="BaseResultMap" type="cn.steateam.lets_team_server.entity.Project">
+    <!--@mbg.generated-->
+    <!--@Table project-->
+    <id column="p_id" property="id" />
+    <result column="p_name" property="name" />
+    <result column="p_avatar_url" property="avatarUrl" />
+    <result column="p_leader_user_id" property="leaderUserId" />
+    <result column="p_organization_id" property="organizationId" />
+    <result column="p_tags" property="tags" />
+    <result column="p_type" property="type" />
+    <result column="p_intro" property="intro" />
+    <result column="p_status" property="status" />
+    <result column="p_create_time" property="createTime" />
+    <result column="p_update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    p_id, p_name, p_avatar_url, p_leader_user_id, p_organization_id, p_tags, p_type, 
+    p_intro, p_status, p_create_time, p_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where p_id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from project
+    where p_id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="p_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Project" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project (p_name, p_avatar_url, p_leader_user_id, p_organization_id, p_tags, p_type, 
+      p_intro, p_status, p_create_time, p_update_time)
+    values (#{name}, #{avatarUrl}, #{leaderUserId}, #{organizationId}, #{tags}, #{type}, 
+      #{intro}, #{status}, #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="p_id" keyProperty="id" parameterType="cn.steateam.lets_team_server.entity.Project" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        p_name,
+      </if>
+      <if test="avatarUrl != null">
+        p_avatar_url,
+      </if>
+      <if test="leaderUserId != null">
+        p_leader_user_id,
+      </if>
+      <if test="organizationId != null">
+        p_organization_id,
+      </if>
+      <if test="tags != null">
+        p_tags,
+      </if>
+      <if test="type != null">
+        p_type,
+      </if>
+      <if test="intro != null">
+        p_intro,
+      </if>
+      <if test="status != null">
+        p_status,
+      </if>
+      <if test="createTime != null">
+        p_create_time,
+      </if>
+      <if test="updateTime != null">
+        p_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl},
+      </if>
+      <if test="leaderUserId != null">
+        #{leaderUserId},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId},
+      </if>
+      <if test="tags != null">
+        #{tags},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.steateam.lets_team_server.entity.Project">
+    <!--@mbg.generated-->
+    update project
+    <set>
+      <if test="name != null">
+        p_name = #{name},
+      </if>
+      <if test="avatarUrl != null">
+        p_avatar_url = #{avatarUrl},
+      </if>
+      <if test="leaderUserId != null">
+        p_leader_user_id = #{leaderUserId},
+      </if>
+      <if test="organizationId != null">
+        p_organization_id = #{organizationId},
+      </if>
+      <if test="tags != null">
+        p_tags = #{tags},
+      </if>
+      <if test="type != null">
+        p_type = #{type},
+      </if>
+      <if test="intro != null">
+        p_intro = #{intro},
+      </if>
+      <if test="status != null">
+        p_status = #{status},
+      </if>
+      <if test="createTime != null">
+        p_create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        p_update_time = #{updateTime},
+      </if>
+    </set>
+    where p_id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.steateam.lets_team_server.entity.Project">
+    <!--@mbg.generated-->
+    update project
+    set p_name = #{name},
+      p_avatar_url = #{avatarUrl},
+      p_leader_user_id = #{leaderUserId},
+      p_organization_id = #{organizationId},
+      p_tags = #{tags},
+      p_type = #{type},
+      p_intro = #{intro},
+      p_status = #{status},
+      p_create_time = #{createTime},
+      p_update_time = #{updateTime}
+    where p_id = #{id}
+  </update>
+  <resultMap id="DetailedVoResultMap" type="cn.steateam.lets_team_server.vo.ProjectDetailedVo">
+    <id column="p_id" property="id" />
+    <result column="p_name" property="name" />
+    <result column="p_avatar_url" property="avatarUrl" />
+    <result column="p_leader_user_id" property="leaderUserId" />
+    <result column="p_organization_id" property="organizationId" />
+    <result column="p_tags" property="tags" />
+    <result column="p_type" property="type" />
+    <result column="p_intro" property="intro" />
+    <result column="p_status" property="status" />
+    <result column="p_create_time" property="createTime" />
+  </resultMap>
+
+  <select id="selectVoById" resultMap="DetailedVoResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project
+    where p_id=#{id}
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-03-13-->
+  <update id="updateStatusById">
+    update project
+    set p_status=#{updatedStatus}
+    where p_id=#{id}
+  </update>
+</mapper>
